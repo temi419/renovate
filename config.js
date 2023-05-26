@@ -27,5 +27,5 @@ module.exports = {
     },
     updateLockFiles: true,
 
-    repositories: ['cdcent/data-exchange-infra', 'cdcent/dmz-api-management-infra', 'cdcent/cdc-coe-emmanuel-test-repo'],
+    repositories: ['temi419/test-script'],
 };
