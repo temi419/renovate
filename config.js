@@ -1,34 +1,31 @@
 module.exports = {
-    username: "cdc-coe-botfrey[bot]",
-    gitAuthor: "Self-hosted Renovate Bot <123456+cdc-coe-botfrey[bot]@users.noreply.github.enterprise.com>",
+    username: "temi-reno",
+    gitAuthor: "Self-hosted Renovate Bot <339479+temi-reno@users.noreply.github.com>",
     platform: 'github',
+    onboarding: true, // disables the creation of renovate.json in each repository
     dependencyDashboard: true,
-    onboardingConfig: {
-        extends: ['config:base',':rebaseStalePrs'],
-    },
     labels: ["renovatebot"],
-    // schedule: ["every weekend"],
+    requiredStatusChecks: null,
     packageRules: [
         {
-            matchPackageNames: ["hashicorp/terraform"],
-            groupName: "terraform",
-        }
+            matchManagers: ['terraform'],
+            matchUpdateTypes: ['minor', 'patch', 'pin'],
+            automerge: true,
+            recreateClosed: true
+        },
+        {
+            matchManagers: ['terraform'],
+            matchUpdateTypes: ['major'],
+            automerge: false,
+            recreateClosed: true
+        },
     ],
-    // Managers https://docs.renovatebot.com/modules/manager/#enabling-and-disabling-managers
     enabledManagers: ["terraform"],
     lockFileMaintenance: {
         enabled: true,
         automerge: true
     },
     updateLockFiles: true,
-    minor: {
-        automerge: true
-    },
-    patch: {
-        automerge: true
-    },
-    pin: {
-        automerge: true
-    },
+
     repositories: ['cdcent/data-exchange-infra', 'cdcent/dmz-api-management-infra', 'cdcent/cdc-coe-emmanuel-test-repo'],
 };
