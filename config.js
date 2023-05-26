@@ -1,6 +1,6 @@
 module.exports = {
-    username: "temi-reno",
-    gitAuthor: "Self-hosted Renovate Bot <339479+temi-reno@users.noreply.github.com>",
+    username: "Temi-reno",
+    gitAuthor: "Temi-reno <339479+temi-reno@users.noreply.github.com>",
     platform: 'github',
     onboarding: true, // disables the creation of renovate.json in each repository
     dependencyDashboard: true,
@@ -26,6 +26,5 @@ module.exports = {
         automerge: true
     },
     updateLockFiles: true,
-
     repositories: ['temi419/test-script'],
 };
