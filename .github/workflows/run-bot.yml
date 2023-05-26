@@ -1,21 +1,22 @@
 name: Run RenovateBot
-
 on:
   schedule:
     # https://crontab.guru/every-hour
     - cron: '0 * * * *'
   workflow_dispatch:
-
 jobs:
   renovate:
-    runs-on:  [self-hosted, renovatebot]
-    environment:
-      name: cdc-coe-botfrey
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+      - name: Install Dependencies
+        run: npm install
       - name: Run
         run: |
           echo "Downloading Github App private key..."
-          echo "${{ secrets.CDC_COE_BOTFREY_PEM }}" > app-private-key.pem
-          
+          echo "${{ secrets.TEMI_SECRET }}" > app-private-key.pem
           npm run renovate
