@@ -1,35 +1,20 @@
 name: Run RenovateBot
-
 on:
   schedule:
     # https://crontab.guru/every-hour
     - cron: '0 * * * *'
   workflow_dispatch:
-
 jobs:
   renovate:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
-
       - name: Install Dependencies
         run: npm install
-
-      - name: Bypass Required Approvals
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          API_URL="https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER"
-          BRANCH_PROTECTION_DATA="{\"required_approvals\": null}"
-          curl -sSL -X PATCH -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" -d "$BRANCH_PROTECTION_DATA" "$API_URL"
-
       - name: Run
         run: |
           echo "Downloading Github App private key..."
