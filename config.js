@@ -26,5 +26,5 @@ module.exports = {
         automerge: true
     },
     updateLockFiles: true,
-    repositories: ['temi419/test-script','temi419/documentation-repo'],
+    repositories: ['temidevops1/test-script','temidevops1/documentation-repo'],
 };
