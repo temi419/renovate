@@ -9,14 +9,14 @@ module.exports = {
     packageRules: [
         {
             matchManagers: ['terraform'],
-            matchUpdateTypes: ['minor', 'major', 'patch', 'pin'],
+            matchUpdateTypes: ['minor', 'patch', 'pin'],
             automerge: true,
             recreateClosed: true
         },
         {
             matchManagers: ['terraform'],
             matchUpdateTypes: ['major'],
-            automerge: true,
+            automerge: false,
             recreateClosed: true
         },
     ],
