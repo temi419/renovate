@@ -6,8 +6,9 @@ module.exports = {
   dependencyDashboard: true,
   labels: ["renovatebot"],
   requiredStatusChecks: null,
-  automerge: true, // Auto merge without reviewing
-  automergeType: "pr", // Allows renovate to auto merge without PR reviews
+  automerge: true,
+  automergeType: "branch",
+  requiredStatusChecks: null,
   packageRules: [
     {
       matchManagers: ['terraform'],
