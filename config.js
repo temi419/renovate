@@ -30,17 +30,23 @@ module.exports = {
   updateLockFiles: true,
   repositories: ['temidevops1/test-script','temidevops1/documentation-repo'],
 };
-name: Auto approve
+name: 'Auto approve and merge PRs by dependabot'
 
-on: pull_request_target
+on:
+  pull_request:
 
 jobs:
-  auto-approve:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    if: github.actor == 'dependabot[bot]'
+  autoapprove:
+    name: 'Auto Approve a PR by dependabot'
+    runs-on: 'ubuntu-latest'
     steps:
-      - uses: hmarr/auto-approve-action@v3
+      - name: 'Auto approve'
+        uses: 'hmarr/auto-approve-action@v2.0.0'
+        if: "github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'"
         with:
-          review-message: "Auto approved automated PR"
+          github-token: '${{ secrets.GITHUB_ACTIONS_TOKEN }}'
+
+  automerge:
+    name: 'Auto merge after successful checks'
+    needs: 'autoapprove'
+
