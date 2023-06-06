@@ -28,3 +28,4 @@ module.exports = {
     updateLockFiles: true,
     repositories: ['temidevops1/test-script','temidevops1/documentation-repo'],
 };
+
