@@ -7,7 +7,7 @@ module.exports = {
   labels: ["renovatebot"],
   requiredStatusChecks: null,
   automerge: true, // Auto merge without reviewing
-  automergeType: "branch", // Allows renovate to auto merge without PR reviews
+  automergeType: "pr", // Allows renovate to auto merge without PR reviews
   packageRules: [
     {
       matchManagers: ['terraform'],
