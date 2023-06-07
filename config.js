@@ -15,12 +15,12 @@ module.exports = {
       automerge: true,
       recreateClosed: true
     },
- //   {
-   //   matchManagers: ['terraform'],
-    //  matchUpdateTypes: ['major'],
-    //  automerge: false,
-    //  recreateClosed: true
-    //},
+    {
+      matchManagers: ['terraform'],
+      matchUpdateTypes: ['major'],
+      automerge: false,
+      recreateClosed: true
+    },
   ],
   enabledManagers: ["terraform"],
   lockFileMaintenance: {
