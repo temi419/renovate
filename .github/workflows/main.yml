@@ -1,0 +1,19 @@
+name: Auto approve and merge PRs by renovate
+
+# Trigger the workflow on pull request
+on:
+  pull_request
+
+jobs:
+  autoapprove:
+    name: Auto Approve a PR by renovate # Name of the job
+    runs-on: ubuntu-latest # Environment on which the job runs
+    steps:
+      - name: Auto approve
+        uses: hmarr/auto-approve-action@v3 # Custom action for auto approval already available on marketplace
+        # Perform the auto approve action only when the PR is raised by dependabot
+        if: github.actor == 'Temi-reno' || github.actor == 'temi**'
+        with:
+          # Create a personal access token and store it under the Secrets section of the particular repository
+          # with the key "GITHUB_ACTIONS_TOKEN"
+          github-token: ${{ secrets.TEMI_SECRET }}
