@@ -12,7 +12,7 @@ module.exports = {
     {
       matchManagers: ['terraform'],
       matchUpdateTypes: ['minor', 'patch', 'pin'],
-      automerge: true,
+      automerge: false,
       recreateClosed: true
     },
     {
